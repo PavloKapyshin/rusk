@@ -1,0 +1,62 @@
+{
+  "dummy": {
+    "__language__": {"displayName": "ĎǓṀ"},
+    "quiz": {
+      "description": "Ťȟǐš ǐš ďěščřǐṗťǐǒň.",
+      "start": "Šṫǎřṫ Qùǐž",
+      "startAgain": "Šṫâṙṫ Åġǎıň",
+      "done": "{correct} ǒḟ {total}",
+      "lap": {
+        "messages": {
+          "chooseSomething": "Ṗľěǎšě, čȟǒǒšě ȧň ǎňšẇěṙ.",
+          "correct": "Ṙìǧḣṫ!",
+          "incorrect": "Ňǒ :("
+        },
+        "submit": {
+          "check": "Čḣěčǩ ǎňšẇėṙ",
+          "report": "Ṅěẋṫ qǔěšṫǐȯň →"
+        }
+      }
+    }
+  },
+  "en": {
+    "__language__": {"displayName": "ENG"},
+    "quiz": {
+      "description": "This is description in English.",
+      "start": "Start Quiz",
+      "startAgain": "Do it again",
+      "done": "{correct} of {total}",
+      "lap": {
+        "messages": {
+          "chooseSomething": "Please, choose an answer.",
+          "correct": "Right!",
+          "incorrect": "No :("
+        },
+        "submit": {
+          "check": "Check answer",
+          "report": "Next question →"
+        }
+      }
+    }
+  },
+  "ru": {
+    "__language__": {"displayName": "RUS"},
+    "quiz": {
+      "description": "Это описание на русском.",
+      "start": "Начать тестирование",
+      "startAgain": "Пройти тест снова",
+      "done": "{correct} из {total}",
+      "lap": {
+        "messages": {
+          "chooseSomething": "Пожалуйста, выберите вариант ответа.",
+          "correct": "Правильно!",
+          "incorrect": "Нет :("
+        },
+        "submit": {
+          "check": "Проверить ответ",
+          "report": "Далее →"
+        }
+      }
+    }
+  }
+}
