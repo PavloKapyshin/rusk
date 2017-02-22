@@ -32,6 +32,12 @@ body {
 .language-chooser li {
     display: inline-block;
     margin-left: .4em;
+    border-top: solid 2px #fff;
+    cursor: pointer;
+}
+.language-chooser .active {
+    border-color: #000;
+    cursor: default;
 }
 
 

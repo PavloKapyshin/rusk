@@ -15,8 +15,10 @@ class LanguageChooser extends Component {
     render() {
         const items = this.props.languages.map(language => {
             const handler = this.handleChoice.bind(this, language)
+            const active = language === this.props.active;
+            const className = active ? "active" : "";
             return (
-                <li key={language} onClick={handler}>
+                <li key={language} onClick={handler} className={className}>
                     {strings[language].__language__.displayName}
                 </li>
             );
@@ -42,7 +44,8 @@ export default class App extends Component {
             <div className="wrapper">
                 <LanguageChooser
                     languages={["en", "ru"]}
-                    reporter={this.handleLanguage} />
+                    reporter={this.handleLanguage}
+                    active={this.state.language} />
                 <Quiz
                     questions={questions} askCount={2}
                     strings={strings[this.state.language].quiz} />
