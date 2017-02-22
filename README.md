@@ -4,6 +4,12 @@
 learn Slovak language. It can also be used by Slovaks to learn Russian :).
 
 
+## Preparation
+```console
+$ npm install
+```
+
+
 ## Running tests
 ```console
 $ npm test
