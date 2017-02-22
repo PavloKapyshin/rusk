@@ -29,7 +29,7 @@ class LanguageChooser extends Component {
 export default class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {language: "dummy"};
+        this.state = {language: "en"};
         this.handleLanguage = this.handleLanguage.bind(this);
     }
 
