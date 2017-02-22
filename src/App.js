@@ -21,7 +21,7 @@ class LanguageChooser extends Component {
                 </li>
             );
         });
-        return <ol>{items}</ol>;
+        return <ol className="language-chooser">{items}</ol>;
     }
 }
 
@@ -39,7 +39,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <div>
+            <div className="wrapper">
                 <LanguageChooser
                     languages={["en", "ru"]}
                     reporter={this.handleLanguage} />

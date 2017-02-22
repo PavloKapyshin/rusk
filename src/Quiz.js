@@ -21,7 +21,7 @@ class QuizLapOptions extends Component {
             );
         });
         return (
-            <ol>{options}</ol>
+            <ol className="quiz-lap-options">{options}</ol>
         );
     }
 }
@@ -39,7 +39,13 @@ class QuizLapSubmit extends Component {
             handler = this.props.checkHandler;
             text = strs.check;
         }
-        return <button onClick={handler}>{text}</button>;
+        return (
+            <div className="btn-wrapper">
+                <button
+                    className="btn submit"
+                    onClick={handler}>{text}</button>
+            </div>
+        );
     }
 }
 
@@ -50,7 +56,7 @@ class QuizLapMessage extends Component {
         if (!message) {
             return null;
         }
-        const className = "message " + message.level;
+        const className = "quiz-lap-message " + message.level;
         return <div className={className}>{message.value}</div>;
     }
 }
@@ -118,8 +124,8 @@ class QuizLap extends Component {
         const question = this.props.question;
 
         return (
-            <div>
-                <span>{question.t}</span>
+            <div className="quiz-lap">
+                <p className="quiz-lap-question">{question.t}</p>
                 <QuizLapOptions
                     question={question} handler={this.handleAnswer}
                     checkedAnswerIndex={this.state.answerIndex} />
@@ -167,9 +173,11 @@ export default class Quiz extends Component {
         const isOngoing = this.state.questionIndex >= 0;
         const isDone = this.state.questionIndex === this.props.askCount;
 
+        var inner;
+
         if (isOngoing && !isDone) {  /* there is "current question" */
             const question = this.questions[this.state.questionIndex];
-            return (
+            inner = (
                 <QuizLap
                     question={question} reporter={this.handleLap}
                     strings={strs.lap} />
@@ -177,19 +185,32 @@ export default class Quiz extends Component {
         } else if (isDone) {  /* no more questions left, quiz is finished */
             const repl = {
                 correct: this.state.correctCount, total: this.props.askCount};
-            return (
-                <div>
-                    <p>{format(strs.done, repl)}</p>
-                    <button onClick={this.startQuiz}>{strs.startAgain}</button>
+            inner = (
+                <div className="quiz-outro">
+                    <p className="quiz-outro-description">
+                        {format(strs.done, repl)}
+                    </p>
+                    <div className="btn-wrapper">
+                        <button
+                            className="btn start"
+                            onClick={this.startQuiz}>{strs.startAgain}</button>
+                    </div>
                 </div>
             );
         } else {  /* have not started yet */
-            return (
-                <div>
-                    <p>{strs.description}</p>
-                    <button onClick={this.startQuiz}>{strs.start}</button>
+            inner = (
+                <div className="quiz-intro">
+                    <p className="quiz-intro-description">
+                        {strs.description}
+                    </p>
+                    <div className="btn-wrapper">
+                        <button
+                            className="btn start"
+                            onClick={this.startQuiz}>{strs.start}</button>
+                    </div>
                 </div>
             );
         }
+        return <div className="quiz">{inner}</div>;
     }
 }
