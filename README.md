@@ -1,4 +1,5 @@
 # rusk
+[![Build Status](https://travis-ci.org/PavloKapyshin/rusk.svg?branch=master)](https://travis-ci.org/PavloKapyshin/rusk)
 
 `rusk` is a single-page application made to help Russian-speaking people
 learn Slovak language. It can also be used by Slovaks to learn Russian :).
