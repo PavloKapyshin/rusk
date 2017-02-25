@@ -198,10 +198,11 @@ export default class Quiz extends Component {
                 </div>
             );
         } else {  /* have not started yet */
+            const repl = {total: this.props.askCount};
             inner = (
                 <div className="quiz-intro">
                     <p className="quiz-intro-description">
-                        {strs.description}
+                        {format(strs.description, repl)}
                     </p>
                     <div className="btn-wrapper">
                         <button

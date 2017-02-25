@@ -2,7 +2,7 @@
   "dummy": {
     "__language__": {"displayName": "ĎǓṀ"},
     "quiz": {
-      "description": "Ťȟǐš ǐš ďěščřǐṗťǐǒň.",
+      "description": "Ťȟǐš ǐš ďěščřǐṗťǐǒň. Qǔėṡṫǐȯṅš ȧšǩėď: {total}.",
       "start": "Šṫǎřṫ Qùǐž",
       "startAgain": "Šṫâṙṫ Åġǎıň",
       "done": "{correct} ǒḟ {total}",
@@ -23,7 +23,7 @@
   "en": {
     "__language__": {"displayName": "ENG"},
     "quiz": {
-      "description": "This is description in English.",
+      "description": "Select correct answer (in {total} asked “questions”).",
       "start": "Start Quiz",
       "startAgain": "Do it again",
       "done": "{correct} of {total}",
@@ -44,7 +44,7 @@
   "ru": {
     "__language__": {"displayName": "RUS"},
     "quiz": {
-      "description": "Это описание на русском.",
+      "description": "Выбирайте правильный перевод (в {total} заданных «вопросах»).",
       "start": "Начать тестирование",
       "startAgain": "Пройти тест снова",
       "done": "{correct} из {total}",
