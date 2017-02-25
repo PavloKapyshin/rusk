@@ -17,7 +17,8 @@
           "report": "Ṅěẋṫ →"
         }
       }
-    }
+    },
+    "copyrightsName": "93ż.ǒṙġ"
   },
   "en": {
     "__language__": {"displayName": "ENG"},
@@ -37,7 +38,8 @@
           "report": "Next →"
         }
       }
-    }
+    },
+    "copyrightsName": "93z.org"
   },
   "ru": {
     "__language__": {"displayName": "RUS"},
@@ -57,6 +59,7 @@
           "report": "Далее →"
         }
       }
-    }
+    },
+    "copyrightsName": "93z.org"
   }
 }

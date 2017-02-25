@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Quiz from "./Quiz";
+import getYearsString from "./Years";
 
 import "./App.css";
 import questions from "./questions.json";
@@ -28,6 +29,31 @@ class LanguageChooser extends Component {
 }
 
 
+class Copyrights extends Component {
+    render() {
+        const isRu = this.props.language === "ru";
+
+        const yearsSep = isRu ? "—" : "–";
+        const years = getYearsString(
+            this.props.startYear, new Date().getFullYear(), yearsSep);
+
+        const link = <a href={this.props.url}>{this.props.name}</a>;
+
+        var first, sep, second;
+        if (isRu) {
+            first = link;
+            sep = ", ";
+            second = years;
+        } else {
+            first = years;
+            sep = " ";
+            second = link;
+        }
+        return <span>© {first}{sep}{second}</span>;
+    }
+}
+
+
 export default class App extends Component {
     constructor(props) {
         super(props);
@@ -40,15 +66,33 @@ export default class App extends Component {
     }
 
     render() {
+        const lang = this.state.language;
+        const strs = strings[lang];
         return (
-            <div className="wrapper">
-                <LanguageChooser
-                    languages={["en", "ru"]}
-                    reporter={this.handleLanguage}
-                    active={this.state.language} />
-                <Quiz
-                    questions={questions} askCount={2}
-                    strings={strings[this.state.language].quiz} />
+            <div className="outer">
+                <div className="inner">
+                    <LanguageChooser
+                        languages={["en", "ru"]}
+                        reporter={this.handleLanguage}
+                        active={lang} />
+                    <Quiz
+                        questions={questions} askCount={2}
+                        strings={strs.quiz} />
+                </div>
+                <ol className="footer">
+                    <li>
+                        <Copyrights
+                            startYear={2017}
+                            language={lang}
+                            name={strs.copyrightsName}
+                            url="http://93z.org" />
+                    </li>
+                    <li>
+                        <a href="https://github.com/PavloKapyshin/rusk">
+                            GitHub
+                        </a>
+                    </li>
+                </ol>
             </div>
         );
     }
