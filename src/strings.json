@@ -14,7 +14,7 @@
         },
         "submit": {
           "check": "Čḣěčǩ ǎňšẇėṙ",
-          "report": "Ṅěẋṫ qǔěšṫǐȯň →"
+          "report": "Ṅěẋṫ →"
         }
       }
     }
@@ -34,7 +34,7 @@
         },
         "submit": {
           "check": "Check answer",
-          "report": "Next question →"
+          "report": "Next →"
         }
       }
     }
@@ -54,7 +54,7 @@
         },
         "submit": {
           "check": "Проверить ответ",
-          "report": "Далее →"
+          "report": "Далее →"
         }
       }
     }
