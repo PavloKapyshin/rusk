@@ -59,3 +59,25 @@ which uses `react-scripts`.
 1. Look at [changelog](https://github.com/facebookincubator/create-react-app/blob/master/CHANGELOG.md).
 2. Look at versions in `package.json`.
 3. If needed, follow migration instructions.
+
+
+## Format of `src/questions.json`
+`src/questions.json` contains list of “question objects”. Each “question
+object” has three fields:
+
+```json
+{"t": "mačka", "o": ["майка", "матч", "пирожок", "кошка"], "c": [3]}
+```
+
+
+### `t`
+Text of question. Usually a word in Russian on Slovak, e.g. `"mačka"`.
+
+
+### `o`
+List of “answers”. Usually a list of words in Russian or Slovak, e.g.
+`["майка", "матч", "пирожок", "кошка"]`.
+
+
+### `c`
+List of indexes of correct “answers” in `o` list, e.g. `[3]`.
