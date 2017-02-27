@@ -122,10 +122,13 @@ class QuizLap extends Component {
         const strs = this.props.strings;
 
         const question = this.props.question;
+        const questionTextTemplate = strs.questionKindTemplates[
+            question.k || "tr"];  // translation is the default kind
+        const questionText = format(questionTextTemplate, {text: question.t});
 
         return (
             <div className="quiz-lap">
-                <p className="quiz-lap-question">{question.t}</p>
+                <p className="quiz-lap-question">{questionText}</p>
                 <QuizLapOptions
                     question={question} handler={this.handleAnswer}
                     checkedAnswerIndex={this.state.answerIndex} />

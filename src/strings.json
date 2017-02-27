@@ -7,6 +7,9 @@
       "startAgain": "Šṫâṙṫ Åġǎıň",
       "done": "{correct} ǒḟ {total}",
       "lap": {
+        "questionKindTemplates": {
+          "tr": "Ḣȯẇ ǐṡ “{text}” ṫṙǎṅšľȧṫěḋ?"
+        },
         "messages": {
           "chooseSomething": "Ṗľěǎšě, čȟǒǒšě ȧň ǎňšẇěṙ.",
           "correct": "Ṙìǧḣṫ!",
@@ -28,6 +31,9 @@
       "startAgain": "Do it again",
       "done": "{correct} of {total}",
       "lap": {
+        "questionKindTemplates": {
+          "tr": "How is “{text}” translated?"
+        },
         "messages": {
           "chooseSomething": "Please, choose an answer.",
           "correct": "Right!",
@@ -49,6 +55,9 @@
       "startAgain": "Пройти тест снова",
       "done": "{correct} из {total}",
       "lap": {
+        "questionKindTemplates": {
+          "tr": "Как переводится «{text}»?"
+        },
         "messages": {
           "chooseSomething": "Пожалуйста, выберите вариант ответа.",
           "correct": "Правильно!",
