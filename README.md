@@ -63,7 +63,7 @@ which uses `react-scripts`.
 
 ## Format of `src/questions.json`
 `src/questions.json` contains list of “question objects”. Each “question
-object” has three fields:
+object” has three mandatory fields (and one optional):
 
 ```json
 {"t": "mačka", "o": ["майка", "матч", "пирожок", "кошка"], "c": [3]}
@@ -81,3 +81,9 @@ List of “answers”. Usually a list of words in Russian or Slovak, e.g.
 
 ### `c`
 List of indexes of correct “answers” in `o` list, e.g. `[3]`.
+
+
+### `k`
+Kind of question. Currently only one kind (`"tr"`—translation) is
+available, and it is default in case `k` is not specified for question
+object.
