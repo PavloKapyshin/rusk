@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/PavloKapyshin/rusk.svg?branch=master)](https://travis-ci.org/PavloKapyshin/rusk)
 
 `rusk` is a single-page quiz application made to help Russian-speaking people
-learn Slovak language. It can also be used by Slovaks to learn Russian :).
+learn Slovak language (and vice versa).
 
 
 ## Preparation
@@ -62,8 +62,8 @@ which uses `react-scripts`.
 
 
 ## Format of `src/questions.json`
-`src/questions.json` contains list of “question objects”. Each “question
-object” has three mandatory fields (and one optional):
+`src/questions.json` contains list of question objects. Each question
+object has three mandatory fields (and one optional):
 
 ```json
 {"t": "mačka", "o": ["майка", "матч", "пирожок", "кошка"], "c": [3]}
@@ -75,12 +75,12 @@ Text of question. Usually a word in Russian on Slovak, e.g. `"mačka"`.
 
 
 ### `o`
-List of “answers”. Usually a list of words in Russian or Slovak, e.g.
+List of answers. Usually a list of words in Russian or Slovak, e.g.
 `["майка", "матч", "пирожок", "кошка"]`.
 
 
 ### `c`
-List of indexes of correct “answers” in `o` list, e.g. `[3]`.
+List of indexes of correct answers in `o` list, e.g. `[3]`.
 
 
 ### `k`

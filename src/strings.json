@@ -26,7 +26,7 @@
   "en": {
     "__language__": {"displayName": "ENG"},
     "quiz": {
-      "description": "This is single-page quiz app made to help Russian-speaking people learn Slovak language (and vice versa). Select correct translation (in {total} asked “questions”).",
+      "description": "This is a single-page quiz app made to help Russian-speaking people learn Slovak language (and vice versa). Select correct answers in {total} asked questions.",
       "start": "Start Quiz",
       "startAgain": "Do it again",
       "done": "{correct} of {total}",
@@ -50,7 +50,7 @@
   "ru": {
     "__language__": {"displayName": "RUS"},
     "quiz": {
-      "description": "Это одностраничное приложение-викторина для изучения словацкого языка русскоязычными (и наоборот). Выбирайте правильный перевод (в {total} заданных «вопросах»).",
+      "description": "Это одностраничное приложение-викторина для изучения словацкого языка русскоязычными (и наоборот). Выбирайте правильные ответы в {total} заданных вопросах.",
       "start": "Начать тестирование",
       "startAgain": "Пройти тест снова",
       "done": "{correct} из {total}",
