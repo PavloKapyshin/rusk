@@ -71,6 +71,15 @@ body {
     text-align: left;
     width: 50%;
 }
+.quiz-lap-options li {
+    color: #000;
+}
+.quiz-lap-options .correct {
+    color: #093;
+}
+.quiz-lap-options .incorrect {
+    color: #c00;
+}
 .quiz-lap-options label {
     display: block;
 }

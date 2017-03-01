@@ -4,11 +4,21 @@ import Message from "./Message";
 import format from "./Format";
 
 
+function answerIsCorrect(answerIndex, question) {
+    return question.c.indexOf(answerIndex) >= 0;
+}
+
+
 class QuizLapOptions extends Component {
     render() {
         const options = this.props.question.o.map((optionText, idx) => {
+            let className = "";
+            if (this.props.checked) {  // submitted answer, can't change mind
+                className = answerIsCorrect(
+                    idx, this.props.question) ? "correct" : "incorrect";
+            }
             return (
-                <li key={idx}>
+                <li key={idx} className={className}>
                     <label>
                         <input
                             type="radio" value={idx} name="same"
@@ -81,15 +91,11 @@ class QuizLap extends Component {
         this.reportAnswer = this.reportAnswer.bind(this);
     }
 
-    isCorrect(answerIndex) {
-        return this.props.question.c.indexOf(answerIndex) >= 0;
-    }
-
     reportAnswer(evt) {
         const answerIndex = this.state.answerIndex;
         this.props.reporter({
             index: answerIndex,
-            correct: this.isCorrect(answerIndex)
+            correct: answerIsCorrect(answerIndex, this.props.question)
         });
         this.setState(this.initialState);
     }
@@ -109,7 +115,7 @@ class QuizLap extends Component {
             checked = false;
         } else {
             checked = true;
-            if (this.isCorrect(answerIndex)) {
+            if (answerIsCorrect(answerIndex, this.props.question)) {
                 verdict = Verdict.correct;
             } else {
                 verdict = Verdict.incorrect;
@@ -126,14 +132,17 @@ class QuizLap extends Component {
             question.k || "tr"];  // translation is the default kind
         const questionText = format(questionTextTemplate, {text: question.t});
 
+        const answerWasChecked = this.state.checked;
+
         return (
             <div className="quiz-lap">
                 <p className="quiz-lap-question">{questionText}</p>
                 <QuizLapOptions
                     question={question} handler={this.handleAnswer}
-                    checkedAnswerIndex={this.state.answerIndex} />
+                    checkedAnswerIndex={this.state.answerIndex}
+                    checked={answerWasChecked} />
                 <QuizLapSubmit
-                    checked={this.state.checked} checkHandler={this.checkAnswer}
+                    checked={answerWasChecked} checkHandler={this.checkAnswer}
                     reportHandler={this.reportAnswer} strings={strs.submit} />
                 <QuizLapMessage message={this.state.verdict(strs.messages)} />
             </div>
