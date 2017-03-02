@@ -110,7 +110,7 @@ class QuizLap extends Component {
     checkAnswer(evt) {
         var verdict, checked;
         const answerIndex = this.state.answerIndex;
-        if (typeof answerIndex !== "number") {  /* no answer */
+        if (typeof answerIndex !== "number") {  // no answer
             verdict = Verdict.chooseSomething;
             checked = false;
         } else {
@@ -187,14 +187,14 @@ export default class Quiz extends Component {
 
         var inner;
 
-        if (isOngoing && !isDone) {  /* there is "current question" */
+        if (isOngoing && !isDone) {  // there is "current question"
             const question = this.questions[this.state.questionIndex];
             inner = (
                 <QuizLap
                     question={question} reporter={this.handleLap}
                     strings={strs.lap} />
             );
-        } else if (isDone) {  /* no more questions left, quiz is finished */
+        } else if (isDone) {  // no more questions left, quiz is finished
             const repl = {
                 correct: this.state.correctCount, total: this.props.askCount};
             inner = (
@@ -209,7 +209,7 @@ export default class Quiz extends Component {
                     </div>
                 </div>
             );
-        } else {  /* have not started yet */
+        } else {  // have not started yet
             const repl = {total: this.props.askCount};
             inner = (
                 <div className="quiz-intro">
