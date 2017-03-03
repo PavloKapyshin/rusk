@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Quiz from "./Quiz";
+import PersistenceManager from "./Persistence";
 import getYearsString from "./Years";
 
 import "./App.css";
@@ -57,12 +58,18 @@ class Copyrights extends Component {
 export default class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {language: "en"};
+        this.languagePersister = new PersistenceManager({
+            factory: () => window.localStorage,
+            key: "language",
+            default: "en"
+        });
+        this.state = {language: this.languagePersister.get()};
         this.handleLanguage = this.handleLanguage.bind(this);
     }
 
     handleLanguage(language) {
         this.setState({language: language});
+        this.languagePersister.set(language);
     }
 
     render() {
