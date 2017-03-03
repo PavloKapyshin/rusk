@@ -9,7 +9,6 @@ it("chooses one element from array", () => {
     expect(indexOfResult).toBeLessThan(arr.length);
 });
 
-
 it("chooses k elements from array", () => {
     const arr = ["el one", "two", "el three", "four"];
     const k = 3;

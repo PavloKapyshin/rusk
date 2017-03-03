@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import Random from "./Random";
 import Message from "./Message";
 import format from "./Format";
