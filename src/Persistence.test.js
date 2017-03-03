@@ -3,15 +3,15 @@ import PersistenceManager from "./Persistence";
 
 class LocalStorage {
     constructor() {
-        this.data = {};
+        this._data = {};
     }
 
     getItem(key) {
-        return this.data[key] || null;
+        return this._data[key] || null;
     }
 
     setItem(key, value) {
-        this.data[key] = value;
+        this._data[key] = value;
     }
 }
 
@@ -69,10 +69,10 @@ it("saves value into and reads value from storage", () => {
     expect(man.get()).toEqual(value);
 });
 
-it("gets value saved into storage", () => {
+it("gets value set into same storage", () => {
     const storage = new LocalStorage();
     const args = {
-        factory: () => storage,  // same storage
+        factory: () => storage,
         key: "otherk",
         default: []
     };
