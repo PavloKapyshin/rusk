@@ -5,6 +5,13 @@
 learn Slovak language (and vice versa).
 
 
+## Features
+- uses React framework
+- UI is in English or Russian, selected language is saved into `localStorage`
+- even for multiple-answer questions, only one answer can be selected
+- questions are random, previously answered ones may be asked again
+
+
 ## Preparation
 ```console
 $ npm install
