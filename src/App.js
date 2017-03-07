@@ -1,33 +1,13 @@
 import React, { Component } from "react";
 
 import Quiz from "./Quiz";
+import LanguageChooser from "./Language";
 import PersistenceManager from "./Persistence";
 import Copyrights from "./Copyrights";
 
 import "./App.css";
 import questions from "./questions.json";
 import strings from "./strings.json";
-
-
-class LanguageChooser extends Component {
-    handleChoice(language, evt) {
-        this.props.reporter(language);
-    }
-
-    render() {
-        const items = this.props.languages.map(language => {
-            const handler = this.handleChoice.bind(this, language)
-            const active = language === this.props.active;
-            const className = active ? "active" : "";
-            return (
-                <li key={language} onClick={handler} className={className}>
-                    {strings[language].__language__.displayName}
-                </li>
-            );
-        });
-        return <ol className="language-chooser">{items}</ol>;
-    }
-}
 
 
 export default class App extends Component {
@@ -56,7 +36,8 @@ export default class App extends Component {
                     <LanguageChooser
                         languages={["en", "ru"]}
                         reporter={this.handleLanguage}
-                        active={lang} />
+                        active={lang}
+                        strings={strings} />
                     <Quiz
                         questions={questions} askCount={2}
                         strings={strs.quiz} />
