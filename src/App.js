@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Quiz from "./Quiz";
 import PersistenceManager from "./Persistence";
-import getYearsString from "./Years";
+import Copyrights from "./Copyrights";
 
 import "./App.css";
 import questions from "./questions.json";
@@ -26,31 +26,6 @@ class LanguageChooser extends Component {
             );
         });
         return <ol className="language-chooser">{items}</ol>;
-    }
-}
-
-
-class Copyrights extends Component {
-    render() {
-        const isRu = this.props.language === "ru";
-
-        const yearsSep = isRu ? "—" : "–";
-        const years = getYearsString(
-            this.props.startYear, new Date().getFullYear(), yearsSep);
-
-        const link = <a href={this.props.url}>{this.props.name}</a>;
-
-        var first, sep, second;
-        if (isRu) {
-            first = link;
-            sep = ", ";
-            second = years;
-        } else {
-            first = years;
-            sep = " ";
-            second = link;
-        }
-        return <span>© {first}{sep}{second}</span>;
     }
 }
 
@@ -90,6 +65,7 @@ export default class App extends Component {
                     <li>
                         <Copyrights
                             startYear={2017}
+                            endYear={new Date().getFullYear()}
                             language={lang}
                             name={strs.copyrightsName}
                             url="http://93z.org" />
