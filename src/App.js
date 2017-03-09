@@ -39,7 +39,7 @@ export default class App extends Component {
                         active={lang}
                         strings={strings} />
                     <Quiz
-                        questions={questions} askCount={2}
+                        questions={questions} askCount={7}
                         strings={strs.quiz} />
                 </div>
                 <ol className="footer">
