@@ -58,8 +58,8 @@ def check(questions):
     for text, ns in text_occurences.items():
         if len(ns) > 1:
             error(
-                "t {} is repeated at {}".format(
-                    text, ", ".join(map(str, ns[1:]))), n=ns[0])
+                "{} {} is repeated at {}".format(
+                    TEXT_FIELD, text, ", ".join(map(str, ns[1:]))), n=ns[0])
 
 
 def main():
