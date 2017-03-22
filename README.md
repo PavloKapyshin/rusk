@@ -94,3 +94,20 @@ List of indexes of correct answers in `o` list, e.g. `[3]`.
 Kind of question. Currently only one kind (`"tr"`—translation) is
 available, and it is default in case `k` is not specified for question
 object.
+
+
+## Linting questions
+After adding questions it may be useful to check them with auxiliary
+Python script:
+
+```console
+$ ./scripts/check-questions.py
+```
+
+If any error is detected, message and number of question (due to “one
+question object per line” policy, it is also a line number) are printed
+to `stderr`:
+
+```
+>= 1 correct index is required (14)
+```
