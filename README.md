@@ -59,7 +59,6 @@ $ npm run build
 
 
 ## Updating `react-scripts`
-
 This project uses [`create-react-app`](https://github.com/facebookincubator/create-react-app),
 which uses `react-scripts`.
 
