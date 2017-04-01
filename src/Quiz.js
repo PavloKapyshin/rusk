@@ -2,11 +2,19 @@ import React, { Component } from "react";
 
 import Random from "./Random";
 import Message from "./Message";
+import PersistenceManager from "./Persistence";
 import format from "./Format";
 
 
 function answerIsCorrect(answerIndex, question) {
     return question.c.indexOf(answerIndex) >= 0;
+}
+
+
+function formatQuestion(question, questionKindTemplates) {
+    return format(  // translation is the default kind
+        questionKindTemplates[question.k || "tr"],
+        {text: question.t});
 }
 
 
@@ -129,9 +137,8 @@ class QuizLap extends Component {
         const strs = this.props.strings;
 
         const question = this.props.question;
-        const questionTextTemplate = strs.questionKindTemplates[
-            question.k || "tr"];  // translation is the default kind
-        const questionText = format(questionTextTemplate, {text: question.t});
+        const questionText = formatQuestion(
+            question, this.props.questionKindTemplates);
 
         const answerWasChecked = this.state.checked;
 
@@ -152,17 +159,93 @@ class QuizLap extends Component {
 }
 
 
+class QuizLearningModeTrigger extends Component {
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(evt) {
+        this.props.changeHandler(evt.target.checked);
+    }
+
+    render() {
+        const strs = this.props.strings;
+
+        return (
+            <label className="quiz-learning-mode-trigger">
+                <input
+                    type="checkbox"
+                    checked={this.props.checked}
+                    onChange={this.handleChange} />
+                {" "}
+                {strs.trigger}
+            </label>
+        );
+    }
+}
+
+
+class QuizLearningModeQADisplay extends Component {
+    render() {
+        const strs = this.props.strings;
+        const questionKindTemplates = this.props.questionKindTemplates;
+
+        var qa = [];
+        this.props.questions.forEach((question, idx) => {
+            const questionText = formatQuestion(
+                question, questionKindTemplates);
+            qa.push(<dt key={`q-${idx}`}>{questionText}</dt>);
+
+            const correctAnswers = question.c.map(
+                answerIndex => question.o[answerIndex]);
+            const className = (correctAnswers.length > 1) ? "multiple" : "";
+            correctAnswers.forEach((answer, answerIdx) => {
+                qa.push(
+                    <dd className={className} key={`q-${idx}-a-${answerIdx}`}>
+                        {answer}
+                    </dd>
+                );
+            });
+        });
+
+        return (
+            <div className="quiz-learning-mode-qa-display">
+                <dl className="qa">{qa}</dl>
+                <div className="btn-wrapper">
+                    <button
+                        className="btn finish-learning"
+                        onClick={this.props.learningHandler}>
+                        {strs.finishLearning}
+                    </button>
+                </div>
+            </div>
+        );
+    }
+}
+
+
 export default class Quiz extends Component {
     constructor(props) {
         super(props);
-        this.state = {questionIndex: -1, correctCount: 0};
+        this.learningModePersister = new PersistenceManager({
+            factory: () => window.localStorage,
+            key: "learningMode",
+            default: false
+        });
+        this.state = {
+            questionIndex: -1, correctCount: 0,
+            learningMode: this.learningModePersister.get(),
+            didLearn: false};
         this.questions = null;
         this.startQuiz = this.startQuiz.bind(this);
         this.handleLap = this.handleLap.bind(this);
+        this.handleLearningMode = this.handleLearningMode.bind(this);
+        this.handleLearning = this.handleLearning.bind(this);
     }
 
     startQuiz(evt) {
-        this.setState({questionIndex: 0, correctCount: 0});
+        this.setState({questionIndex: 0, correctCount: 0, didLearn: false});
         this.questions = Random.sample(
             this.props.questions, this.props.askCount);
     }
@@ -180,21 +263,42 @@ export default class Quiz extends Component {
         });
     }
 
+    handleLearningMode(checked) {
+        this.setState({learningMode: checked});
+        this.learningModePersister.set(checked);
+    }
+
+    handleLearning() {
+        this.setState({didLearn: true});
+    }
+
     render() {
         const strs = this.props.strings;
 
         const isOngoing = this.state.questionIndex >= 0;
         const isDone = this.state.questionIndex === this.props.askCount;
+        const shouldLearn = this.state.learningMode && !this.state.didLearn;
 
         var inner;
 
         if (isOngoing && !isDone) {  // there is "current question"
-            const question = this.questions[this.state.questionIndex];
-            inner = (
-                <QuizLap
-                    question={question} reporter={this.handleLap}
-                    strings={strs.lap} />
-            );
+            if (shouldLearn) {
+                inner = (
+                    <QuizLearningModeQADisplay
+                        questions={this.questions}
+                        learningHandler={this.handleLearning}
+                        strings={strs.learningMode}
+                        questionKindTemplates={strs.questionKindTemplates} />
+                );
+            } else {
+                const question = this.questions[this.state.questionIndex];
+                inner = (
+                    <QuizLap
+                        question={question} reporter={this.handleLap}
+                        strings={strs.lap}
+                        questionKindTemplates={strs.questionKindTemplates} />
+                );
+            }
         } else if (isDone) {  // no more questions left, quiz is finished
             const repl = {
                 correct: this.state.correctCount, total: this.props.askCount};
@@ -203,6 +307,10 @@ export default class Quiz extends Component {
                     <p className="quiz-outro-description">
                         {format(strs.done, repl)}
                     </p>
+                    <QuizLearningModeTrigger
+                        checked={this.state.learningMode}
+                        changeHandler={this.handleLearningMode}
+                        strings={strs.learningMode} />
                     <div className="btn-wrapper">
                         <button
                             className="btn start"
@@ -217,6 +325,10 @@ export default class Quiz extends Component {
                     <p className="quiz-intro-description">
                         {format(strs.description, repl)}
                     </p>
+                    <QuizLearningModeTrigger
+                        checked={this.state.learningMode}
+                        changeHandler={this.handleLearningMode}
+                        strings={strs.learningMode} />
                     <div className="btn-wrapper">
                         <button
                             className="btn start"

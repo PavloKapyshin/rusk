@@ -6,10 +6,10 @@
       "start": "Šṫǎřṫ Qùǐž",
       "startAgain": "Šṫâṙṫ Åġǎıň",
       "done": "{correct} ǒḟ {total}",
+      "questionKindTemplates": {
+        "tr": "Ḣȯẇ ǐṡ “{text}” ṫṙǎṅšľȧṫěḋ?"
+      },
       "lap": {
-        "questionKindTemplates": {
-          "tr": "Ḣȯẇ ǐṡ “{text}” ṫṙǎṅšľȧṫěḋ?"
-        },
         "messages": {
           "chooseSomething": "Ṗľěǎšě, čȟǒǒšě ȧň ǎňšẇěṙ.",
           "correct": "Ṙìǧḣṫ!",
@@ -19,6 +19,10 @@
           "check": "Čḣěčǩ ǎňšẇėṙ",
           "report": "Ṅěẋṫ →"
         }
+      },
+      "learningMode": {
+        "trigger": "Ŝḣôẇ ċȯṙřėċṫ ȧṅṡẇěṙṡ ḃěḟȯṙė qǔıż ṡṫȧṙṫṡ",
+        "finishLearning": "Ḟıṅìṡḣ ľėȧṙṅıṅġ"
       }
     },
     "copyrightsName": "93ż.ǒṙġ"
@@ -30,10 +34,10 @@
       "start": "Start Quiz",
       "startAgain": "Do it again",
       "done": "{correct} of {total}",
+      "questionKindTemplates": {
+        "tr": "How is “{text}” translated?"
+      },
       "lap": {
-        "questionKindTemplates": {
-          "tr": "How is “{text}” translated?"
-        },
         "messages": {
           "chooseSomething": "Please, choose an answer.",
           "correct": "Right!",
@@ -43,6 +47,10 @@
           "check": "Check answer",
           "report": "Next →"
         }
+      },
+      "learningMode": {
+        "trigger": "Show correct answers before quiz starts",
+        "finishLearning": "Continue"
       }
     },
     "copyrightsName": "93z.org"
@@ -54,10 +62,10 @@
       "start": "Начать тестирование",
       "startAgain": "Пройти тест снова",
       "done": "{correct} из {total}",
+      "questionKindTemplates": {
+        "tr": "Как переводится «{text}»?"
+      },
       "lap": {
-        "questionKindTemplates": {
-          "tr": "Как переводится «{text}»?"
-        },
         "messages": {
           "chooseSomething": "Пожалуйста, выберите вариант ответа.",
           "correct": "Правильно!",
@@ -67,6 +75,10 @@
           "check": "Проверить ответ",
           "report": "Далее →"
         }
+      },
+      "learningMode": {
+        "trigger": "Показать правильные ответы до начала тестирования",
+        "finishLearning": "Продолжить"
       }
     },
     "copyrightsName": "93z.org"

@@ -58,6 +58,32 @@ body {
     margin: 0 0 1em;
 }
 
+.quiz-learning-mode-trigger {
+    display: block;
+    margin: 0 0 .4em;
+}
+
+
+.quiz-learning-mode-qa-display .qa {
+    margin: 0 0 1em;
+}
+.quiz-learning-mode-qa-display .qa dt {
+    margin: 1em 0 0;
+}
+.quiz-learning-mode-qa-display .qa dt:first-child {
+    margin-top: 0;
+}
+.quiz-learning-mode-qa-display .qa dd {
+    margin: 0;
+    display: inline-block;
+}
+.quiz-learning-mode-qa-display .qa .multiple:before {
+    content: "\a0\00b7\a0";
+}
+.quiz-learning-mode-qa-display .qa dt + .multiple:before {
+    content: "";
+}
+
 
 .quiz-lap-question {
     padding: 0 1em;
